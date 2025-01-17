@@ -94,6 +94,5 @@ def list_students_in_class(class_id):
 
 if __name__ == "__main__":
     #add_teacher("T002","Nikolai", "Meth")
-    for i in range(2,5):
-        add_student(f"S00{i}", input("Name:"), input("Age: "), f"C00{i}")
-    #list_students_in_class("C001")
+   
+    list_students_in_class("C001")
