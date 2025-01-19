@@ -57,11 +57,13 @@ def add_client(client_id, client_name, contact_email, phone_number, address):
 
 
 def add_task(task_id, task_name, assigned_to, project_id, due_date, status):
+    employee_ref = db.collection("Employee").document(assigned_to)
+    project_ref = db.collection("Projects").document(project_id)
     task_data = {
         "task_id": task_id,
         "task_name": task_name,
-        "assigned_to": assigned_to, 
-        "project_id": project_id,
+        "assigned_to": employee_ref, 
+        "project_id": project_ref,
         "due_date": due_date,
         "status": status
     }
@@ -100,7 +102,7 @@ def updateTask(task_id, newStatus):
     db.collection("Tasks").document(task_id).update({"status" : newStatus})
 
 if __name__ == "__main__":
-    updateTask("T001", "Complete")
+    #updateTask("T001", "Complete")
     #listemployeebydepartment("D001")
     #listtaskforemployee("C001")
     #lsitprojectsforclients("C002")
@@ -145,7 +147,7 @@ if __name__ == "__main__":
 
     # add_client(client_id, client_name, contact_email, phone_number, address)
 
-    # Input for adding a task
+     #Input for adding a task
     # task_id = input("Task ID: ")
     # task_name = input("Task Name: ")
     # assigned_to = input("Assigned To (Employee ID): ")
